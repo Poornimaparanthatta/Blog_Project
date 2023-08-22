@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Blogs Here</h4>
+<!--                  <p class="card-description">-->
+<!--                    Basic form elements-->
+<!--                  </p>-->
+                  <br>
+                  <form class="forms-sample" method="post" action="{% url 'Blog_save' %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label>Select Category</label>
+                      <select name="category">
+
+                        {% for d in data %}
+                        <option>{{d.Category}}</option>
+                        {% endfor %}
+
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName2">Blog Title</label>
+                      <input type="text" class="form-control" id="exampleInputName2" placeholder="Blog" name="blog">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Date Created</label>
+                      <input type="date" class="form-control" id="exampleInputEmail3" placeholder="Date" name="date">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword4">Author</label>
+                      <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Author" name="author">
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleSelectGender">Gender</label>-->
+<!--                        <select class="form-control" id="exampleSelectGender">-->
+<!--                          <option>Male</option>-->
+<!--                          <option>Female</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+                   <div class="form-group">
+                      <label>File upload</label><br>
+                        <input class="form-control" type="file" name="bimage">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputCity1">City</label>
+                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location" name="city">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Content</label>
+                      <textarea style="height:200px;" class="form-control" id="exampleTextarea1" rows="4" placeholder="Content" name="content"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+
+</body>
+</html>
+{% endblock %}

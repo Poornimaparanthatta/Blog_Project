@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Displaying Added Categories</h4>
+<!--                  <p class="card-description">-->
+<!--                    Add class <code>.table</code>-->
+<!--                  </p>-->
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Category</th>
+                          <th>Image</th>
+                          <th>Description</th>
+                          <th>Option 1</th>
+                          <th>Option 2</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data %}
+                        <tr>
+                          <td>{{i.Category}}</td>
+                          <td>
+                            <img src="{{i.Image.url}}" alt="" height="100px" width="100px">
+                          </td>
+                          <td>{{i.Description}}</td>
+
+                          <td>
+                            <form action="{% url 'Cat_edit' dataid=i.id %}">
+                              <button type="submit" class="btn btn-primary">Edit</button></form>
+                          </td>
+                          <td>
+                            <form action="{% url 'Cat_del' dataid=i.id %}">
+                              <button type="submit" class="btn btn-primary">Delete</button></form>
+                          </td>
+
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}
